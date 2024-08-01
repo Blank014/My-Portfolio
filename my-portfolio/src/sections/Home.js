@@ -1,6 +1,5 @@
-// src/sections/Home.js
 import React from 'react';
-import './Home.css';
+import '../styles/Home.css';
 
 const Home = () => (
     <section id="home" className="home">
