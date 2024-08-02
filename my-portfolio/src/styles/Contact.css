@@ -1,6 +1,6 @@
 .contact {
     background: #f4f4f4;
-    padding: 50px 20px;
+    padding: 20px;
     text-align: center;
 }
 
@@ -20,4 +20,11 @@
 .contact ul li a {
     color: #007bff;
     text-decoration: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .contact {
+        padding: 10px;
+    }
 }

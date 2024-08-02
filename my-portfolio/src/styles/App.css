@@ -12,6 +12,7 @@ body {
 .main-container {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .left-column {
@@ -20,7 +21,24 @@ body {
 }
 
 .right-column {
-  flex: 2;
+  flex: 1.5;
   background-color: #f4f4f4;
   padding: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .left-column,
+  .right-column {
+    flex: 1;
+    padding: 10px;
+  }
+
+  .right-column {
+    background-color: #fff;
+  }
 }

@@ -1,5 +1,5 @@
 .projects {
-    padding: 50px 20px;
+    padding: 20px;
 }
 
 .projects h2 {
@@ -31,4 +31,11 @@
 .project-item a {
     color: #007bff;
     text-decoration: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .project-item {
+        width: 100%;
+    }
 }
