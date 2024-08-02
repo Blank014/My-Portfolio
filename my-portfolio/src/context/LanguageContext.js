@@ -11,6 +11,11 @@ const translations = {
         projects: "Projects",
         contact: "Contact",
         findMe: "You can find me on:",
+        uniWork: "Uni & Work",
+        education: "Education",
+        educationDetails: "I studied [Your Degree] at [Your University].",
+        work: "Work Experience",
+        workDetails: "I have worked at [Your Company] as a [Your Position]."
     },
     de: {
         welcome: "Willkommen in meinem Portfolio",
@@ -20,6 +25,11 @@ const translations = {
         projects: "Projekte",
         contact: "Kontakt",
         findMe: "Sie können mich finden auf:",
+        uniWork: "Uni & Arbeit",
+        education: "Bildung",
+        educationDetails: "Ich habe [Your Degree] an der [Your University] studiert.",
+        work: "Berufserfahrung",
+        workDetails: "Ich habe bei [Your Company] als [Your Position] gearbeitet."
     }
 };
 

@@ -4,6 +4,7 @@ import Home from './sections/Home';
 import About from './sections/About';
 import Projects from './sections/Projects';
 import Contact from './sections/Contact';
+import UniWork from './sections/UniWork';
 import './styles/App.css';
 import { LanguageProvider } from './context/LanguageContext';
 
@@ -18,6 +19,7 @@ function App() {
           </div>
           <div className="right-column">
             <About />
+            <UniWork />
             <Projects />
             <Contact />
           </div>
