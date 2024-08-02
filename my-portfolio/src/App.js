@@ -5,22 +5,26 @@ import About from './sections/About';
 import Projects from './sections/Projects';
 import Contact from './sections/Contact';
 import './styles/App.css';
+import { LanguageProvider } from './context/LanguageContext';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <div className="main-container">
-        <div className="left-column">
-          <Home />
-        </div>
-        <div className="right-column">
-          <About />
-          <Projects />
-          <Contact />
+    <LanguageProvider>
+      <div className="App">
+        <Header />
+        <div className="main-container">
+          <div className="left-column">
+            <Home />
+          </div>
+          <div className="right-column">
+            <About />
+            <Projects />
+            <Contact />
+          </div>
         </div>
       </div>
-    </div>
+    </LanguageProvider>
+
   );
 }
 

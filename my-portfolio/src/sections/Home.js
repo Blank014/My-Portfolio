@@ -1,11 +1,16 @@
 import React from 'react';
 import '../styles/Home.css';
+import { useLanguage } from '../context/LanguageContext';
 
-const Home = () => (
-    <section id="home" className="home">
-        <h1>Welcome to My Portfolio</h1>
-        <p>Hello! I'm [Your Name], a [Your Profession].</p>
-    </section>
-);
+const Home = () => {
+    const { translations } = useLanguage();
+
+    return (
+        <section id="home" className="home">
+            <h1>{translations.welcome}</h1>
+            <p>{translations.intro}</p>
+        </section>
+    );
+};
 
 export default Home;

@@ -1,12 +1,16 @@
 import React from 'react';
 import '../styles/About.css';
+import { useLanguage } from '../context/LanguageContext';
 
-const About = () => (
-    <section id="about" className="about">
-        <h2>About Me</h2>
-        <p>I'm a [Your Profession] based in [Your Location]. I graduated from [Your University] with a degree in [Your Degree].</p>
-        <p>In my free time, I enjoy [Hobbies].</p>
-    </section>
-);
+const About = () => {
+    const { translations } = useLanguage();
+
+    return (
+        <section id="about" className="about">
+            <h2>{translations.about}</h2>
+            <p>{translations.aboutText}</p>
+        </section>
+    );
+};
 
 export default About;

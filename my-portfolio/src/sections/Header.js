@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import '../styles/Header.css';
+import { useLanguage } from '../context/LanguageContext';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
-
+    const { toggleLanguage } = useLanguage();
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
@@ -22,6 +23,9 @@ const Header = () => {
                     <li><a href="#projects" onClick={() => setIsOpen(false)}>Projects</a></li>
                     <li><a href="#contact" onClick={() => setIsOpen(false)}>Contact</a></li>
                 </ul>
+                <button onClick={toggleLanguage} className="language-switch">
+                    Switch Language
+                </button>
             </nav>
         </header>
     );
