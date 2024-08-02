@@ -1,12 +1,19 @@
+import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
+
 import '../styles/Header.css';
-import { useLanguage } from '../context/LanguageContext';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const { toggleLanguage } = useLanguage();
+    const { t, i18n } = useTranslation();
     const toggleMenu = () => {
         setIsOpen(!isOpen);
+    };
+    const [language, setLanguage] = useState('en');
+
+    const toggleLanguage = () => {
+        setLanguage((prevLanguage) => (prevLanguage === 'en' ? 'de' : 'en'));
+        i18n.changeLanguage(language);
     };
 
     return (

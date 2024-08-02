@@ -1,14 +1,15 @@
 import React from 'react';
 import '../styles/Contact.css';
-import { useLanguage } from '../context/LanguageContext';
+import { useTranslation } from 'react-i18next';
+
 
 const Contact = () => {
-    const { translations } = useLanguage();
+    const { t } = useTranslation();
 
     return (
         <section id="contact" className="contact">
-            <h2>{translations.contact}</h2>
-            <p>{translations.findMe}</p>
+            <h2>{t('contact')}</h2>
+            <p>{t('findMe')}</p>
             <ul>
                 <li><a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a></li>
                 <li><a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>

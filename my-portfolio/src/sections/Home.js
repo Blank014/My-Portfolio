@@ -1,14 +1,14 @@
 import React from 'react';
 import '../styles/Home.css';
-import { useLanguage } from '../context/LanguageContext';
+import { useTranslation } from 'react-i18next';
+
 
 const Home = () => {
-    const { translations } = useLanguage();
-
+    const { t } = useTranslation();
     return (
         <section id="home" className="home">
-            <h1>{translations.welcome}</h1>
-            <p>{translations.intro}</p>
+            <h1>{t('welcome')}</h1>
+            <p>{t('intro')}</p>
         </section>
     );
 };

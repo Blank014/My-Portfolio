@@ -1,21 +1,21 @@
 import React from 'react';
 import '../styles/UniWork.css';
-import { useLanguage } from '../context/LanguageContext';
+import { useTranslation } from 'react-i18next';
 
 const UniWork = () => {
-    const { translations } = useLanguage();
+    const { t } = useTranslation();
 
     return (
         <section id="uniwork" className="uniwork">
-            <h2>{translations.uniWork}</h2>
+            <h2>{t('uniWork')}</h2>
             <div className="uniwork-content">
                 <div className="education">
-                    <h3>{translations.education}</h3>
-                    <p>{translations.educationDetails}</p>
+                    <h3>{t('education')}</h3>
+                    <p>{t('educationDetails')}</p>
                 </div>
                 <div className="work">
-                    <h3>{translations.work}</h3>
-                    <p>{translations.workDetails}</p>
+                    <h3>{t('work')}</h3>
+                    <p>{t('workDetails')}</p>
                 </div>
             </div>
         </section>

@@ -1,13 +1,13 @@
 import React from 'react';
 import '../styles/Projects.css';
-import { useLanguage } from '../context/LanguageContext';
+import { useTranslation } from 'react-i18next';
 
 const Projects = () => {
-    const { translations } = useLanguage();
+    const { t } = useTranslation();
 
     return (
         <section id="projects" className="projects">
-            <h2>{translations.projects}</h2>
+            <h2>{t('projects')}</h2>
             <div className="project-list">
                 <div className="project-item">
                     <h3>Project Name</h3>

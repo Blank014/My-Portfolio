@@ -1,14 +1,14 @@
 import React from 'react';
 import '../styles/Hobbies.css';
-import { useLanguage } from '../context/LanguageContext';
+import { useTranslation } from 'react-i18next';
 
 const Hobbies = () => {
-    const { translations } = useLanguage();
+    const { t } = useTranslation();
 
     return (
         <section id="hobbies" className="hobbies">
-            <h2>{translations.hobbies}</h2>
-            <p>{translations.hobbiesDetails}</p>
+            <h2>{t('hobbies')}</h2>
+            <p>{t('hobbiesDetails')}</p>
         </section>
     );
 };
