@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import '../styles/Header.css';
 
-const Header = () => {
+const Header = ({ header }) => {
     const [isOpen, setIsOpen] = useState(false);
     const { t, i18n } = useTranslation();
     const toggleMenu = () => {
@@ -17,7 +17,7 @@ const Header = () => {
     };
 
     return (
-        <header className="header">
+        <header className={`header ${header}`}>
             <nav>
                 <div className="burger-menu" onClick={toggleMenu}>
                     <div className="line"></div>

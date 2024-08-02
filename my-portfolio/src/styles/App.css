@@ -14,10 +14,15 @@ body {
 }
 
 .header {
-  position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
+}
+.position-fixed{
+  position: fixed;
+}
+.position-sticky {
+  position: sticky;
 }
 
 .main-container {
@@ -70,4 +75,24 @@ body {
     background-color: #fff;
     padding: 10px;
   }
+}
+.mobile-main-container{
+display: flex;
+flex-direction: column;
+
+
+}
+
+.Mobile-App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.mobile-header {
+  position: sticky;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
 }
