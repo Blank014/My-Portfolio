@@ -22,6 +22,7 @@ const Header = () => {
                     <li><a href="#about" onClick={() => setIsOpen(false)}>About</a></li>
                     <li><a href="#uniwork" onClick={() => setIsOpen(false)}>Uni & Work</a></li>
                     <li><a href="#projects" onClick={() => setIsOpen(false)}>Projects</a></li>
+                    <li><a href="#hobbies" onClick={() => setIsOpen(false)}>Hobbies</a></li>
                     <li><a href="#contact" onClick={() => setIsOpen(false)}>Contact</a></li>
                 </ul>
                 <button onClick={toggleLanguage} className="language-switch">

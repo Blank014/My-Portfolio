@@ -5,6 +5,7 @@ import About from './sections/About';
 import Projects from './sections/Projects';
 import Contact from './sections/Contact';
 import UniWork from './sections/UniWork';
+import Hobbies from './sections/Hobbies';
 import './styles/App.css';
 import { LanguageProvider } from './context/LanguageContext';
 
@@ -21,6 +22,7 @@ function App() {
             <About />
             <UniWork />
             <Projects />
+            <Hobbies />
             <Contact />
           </div>
         </div>

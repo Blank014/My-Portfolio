@@ -15,7 +15,9 @@ const translations = {
         education: "Education",
         educationDetails: "I studied [Your Degree] at [Your University].",
         work: "Work Experience",
-        workDetails: "I have worked at [Your Company] as a [Your Position]."
+        workDetails: "I have worked at [Your Company] as a [Your Position].",
+        hobbies: "Hobbies",
+        hobbiesDetails: "In my free time, I enjoy [Your Hobbies]."
     },
     de: {
         welcome: "Willkommen in meinem Portfolio",
@@ -29,7 +31,9 @@ const translations = {
         education: "Bildung",
         educationDetails: "Ich habe [Your Degree] an der [Your University] studiert.",
         work: "Berufserfahrung",
-        workDetails: "Ich habe bei [Your Company] als [Your Position] gearbeitet."
+        workDetails: "Ich habe bei [Your Company] als [Your Position] gearbeitet.",
+        hobbies: "Hobbys",
+        hobbiesDetails: "In meiner Freizeit genieße ich [Your Hobbies]."
     }
 };
 

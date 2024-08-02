@@ -1,0 +1,20 @@
+.hobbies {
+    background: #f4f4f4;
+    padding: 20px;
+}
+
+.hobbies h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.hobbies p {
+    font-size: 1.1em;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hobbies {
+        padding: 10px;
+    }
+}
