@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/Home.css";
+import AvatarCanvas from '../components/AvatarCanvas';
 import { useTranslation } from "react-i18next";
 
 const Home = () => {
@@ -8,6 +9,9 @@ const Home = () => {
     <section id="home" className="home">
       <h1>{t("welcome")}</h1>
       <p>{t("intro")}</p>
+      <div className="avatar-container">
+        <AvatarCanvas />
+      </div>
     </section>
   );
 };
