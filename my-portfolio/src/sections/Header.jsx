@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import React, { useState } from "react";
 
 import "../styles/Header.css";
+import { useTheme } from "../context/ThemeContext";
 
 const Header = ({ header }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +16,8 @@ const Header = ({ header }) => {
     setLanguage((prevLanguage) => (prevLanguage === "en" ? "de" : "en"));
     i18n.changeLanguage(language);
   };
+
+  const { toggleTheme } = useTheme();
 
   return (
     <header className={`header ${header}`}>
@@ -58,6 +61,9 @@ const Header = ({ header }) => {
         </ul>
         <button onClick={toggleLanguage} className="language-switch">
           Switch Language
+        </button>
+        <button onClick={toggleTheme} className="theme-switch">
+          Toggle Theme
         </button>
       </nav>
     </header>

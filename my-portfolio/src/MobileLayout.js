@@ -6,24 +6,24 @@ import Projects from './sections/Projects';
 import Contact from './sections/Contact';
 import UniWork from './sections/UniWork';
 import Hobbies from './sections/Hobbies';
+import { ThemeProvider } from './context/ThemeContext';
 
 const MobileLayout = () => {
 
     return (
-
-        <div className="Mobile-App">
-            <Header header='position-sticky' />
-            <div className="mobile-main-container">
-                <Home />
-                <About />
-                <UniWork />
-                <Projects />
-                <Hobbies />
-                <Contact />
-
+        <ThemeProvider>
+            <div className="Mobile-App">
+                <Header header='position-sticky' />
+                <div className="mobile-main-container">
+                    <Home />
+                    <About />
+                    <UniWork />
+                    <Projects />
+                    <Hobbies />
+                    <Contact />
+                </div>
             </div>
-
-        </div>
+        </ThemeProvider>
 
     );
 };

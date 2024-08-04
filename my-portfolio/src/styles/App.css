@@ -1,9 +1,27 @@
+:root {
+  --background: #460066;
+  --primary: #650076;
+  --secondary: #BE58CF;
+  --accent: #73A3B3;
+  --text: #FFFFFF;
+}
+
+body.light-theme {
+  --background: #BFACC8;
+  --primary: #C8C6D7;
+  --secondary: #783F8E;
+  --accent: #4F1271;
+  --text: #000000;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: var(--background);
   overflow-x: hidden;
+  color: var(--text);
 }
 
 .App {
@@ -14,13 +32,16 @@ body {
 }
 
 .header {
+  background-color: var(--primary);
   width: 100%;
   top: 0;
   z-index: 1000;
 }
+
 .position-fixed{
   position: fixed;
 }
+
 .position-sticky {
   position: sticky;
 }
@@ -33,54 +54,27 @@ body {
 }
 
 .left-column {
-  flex: 1;
+  flex: 2;
   position: static;
   left: 0;
   top: 60px;
   bottom: 0;
   width: auto;
-  background-color: #f4f4f4;
   padding: 20px;
   overflow-y: auto;
 }
 
 .right-column {
-  flex: 2;
-
+  flex: 3;
   width: 30%;
   overflow-y: auto;
-  background-color: #f4f4f4;
   padding: 20px;
   height: auto;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .main-container {
-
-    width: 100%;
-    margin-top: 60px;
-    flex-direction: column;
-  }
-
-  .left-column {
-    position: static;
-    width: 100%;
-    padding: 10px;
-  }
-
-  .right-column {
-    margin-left: 0;
-    width: 100%;
-    background-color: #fff;
-    padding: 10px;
-  }
-}
 .mobile-main-container{
 display: flex;
 flex-direction: column;
-
-
 }
 
 .Mobile-App {
@@ -95,4 +89,16 @@ flex-direction: column;
   width: 100%;
   top: 0;
   z-index: 1000;
+}
+
+.language-switch,
+.theme-switch {
+  background: var(--accent);
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 1em;
+  margin-left: 20px;
+  padding: 10px;
+  border-radius: 5px;
 }

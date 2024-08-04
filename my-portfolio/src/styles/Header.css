@@ -1,5 +1,4 @@
 .header {
-    background: #333;
     color: white;
     padding: 10px 0;
 }
@@ -20,7 +19,6 @@
 .header nav .burger-menu .line {
     width: 25px;
     height: 3px;
-    background-color: white;
     margin: 4px 0;
 }
 
