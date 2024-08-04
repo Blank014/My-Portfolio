@@ -17,13 +17,13 @@ function Avatar() {
 
 export default function AvatarCanvas() {
     return (
-        <Canvas>
+        <Canvas camera={{ position: [-4, 1, 3], fov: 50 }}>
             <ambientLight intensity={0.5} />
             <directionalLight position={[5, 5, 5]} />
             <Suspense fallback={null}>
                 <Avatar />
             </Suspense>
-            <OrbitControls />
+            <OrbitControls enableZoom={true} target={[0, 1, 0]} />
         </Canvas>
     );
 }
