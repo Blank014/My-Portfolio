@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/Home.css";
 import AvatarCanvas from '../components/AvatarCanvas';
 import { useTranslation } from "react-i18next";
+import AvatarScene from "../components/AvatarScene";
 
 const Home = () => {
   const { t } = useTranslation();
