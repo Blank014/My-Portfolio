@@ -1,19 +1,102 @@
 .hobbies {
-    padding: 20px;
+    padding: 30px;
 }
 
 .hobbies h2 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    position: relative;
+}
+
+.hobbies h2:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--secondary);
+    border-radius: 3px;
 }
 
 .hobbies p {
-    font-size: 1.1em;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+}
+
+.hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.hobby-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.hobby-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hobby-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    transition: var(--transition);
+}
+
+.hobby-card:hover .hobby-icon {
+    transform: scale(1.1);
+    background-color: var(--accent);
+}
+
+.hobby-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--accent);
+}
+
+.hobby-description {
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
     .hobbies {
-        padding: 10px;
+        padding: 20px;
+    }
+    
+    .hobbies-grid {
+        grid-template-columns: 1fr;
     }
 }

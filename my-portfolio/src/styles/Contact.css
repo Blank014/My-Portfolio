@@ -1,29 +1,230 @@
-.contact {
-    padding: 20px;
-    text-align: center;
+.contact-section {
+  padding: 100px 0;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.contact h2 {
-    margin-bottom: 20px;
+.contact-heading {
+  font-size: clamp(40px, 5vw, 60px);
+  margin-bottom: 20px;
 }
 
-.contact ul {
-    list-style: none;
-    padding: 0;
+.contact-subheading {
+  color: var(--primary);
+  font-family: 'Inter', monospace;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 20px;
 }
 
-.contact ul li {
-    margin: 10px 0;
+.contact-description {
+  color: var(--text-secondary);
+  margin-bottom: 50px;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
-.contact ul li a {
-    color: #007bff;
-    text-decoration: none;
+.contact-button {
+  margin-top: 50px;
 }
 
-/* Responsive Styles */
+.contact-methods {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.contact-method {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  font-size: 20px;
+  transition: var(--transition);
+}
+
+.contact-method:hover .contact-icon {
+  background-color: rgba(128, 43, 177, 0.1);
+  transform: translateY(-5px);
+}
+
+.contact-method h3 {
+  font-size: 18px;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.contact-method p {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text-secondary);
+}
+
+.contact-method a {
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.contact-method a:hover {
+  color: var(--primary);
+}
+
+.contact-form {
+  max-width: 500px;
+  margin: 50px auto 0;
+  /* Using the centralized fade-in animation from App.css instead of custom formAppear animation */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s forwards;
+  animation-delay: 0.5s;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--surface-variant);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(163, 136, 238, 0.1);
+}
+
+textarea.form-control {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.submit-btn {
+  margin-top: 20px;
+}
+
+.submit-btn.submitting {
+  background-color: var(--primary);
+  color: white;
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
 @media (max-width: 768px) {
-    .contact {
-        padding: 10px;
-    }
+  .contact-section {
+    padding: 80px 0;
+  }
+  
+  .contact-methods {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+/* Form status messages */
+.form-success,
+.form-error {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.form-success {
+  background-color: rgba(72, 187, 120, 0.1);
+  color: #48bb78;
+  border: 1px solid rgba(72, 187, 120, 0.2);
+}
+
+.form-error {
+  background-color: rgba(245, 101, 101, 0.1);
+  color: #f56565;
+  border: 1px solid rgba(245, 101, 101, 0.2);
+}
+
+.form-success i,
+.form-error i {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.form-success p,
+.form-error p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Loading spinner */
+.button-spinner {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Form focus and validation states */
+.form-control:focus-visible {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(163, 136, 238, 0.2);
+}
+
+.form-control:not(:focus):invalid {
+  border-color: #f56565;
+}
+
+.form-control:not(:focus):valid {
+  border-color: #48bb78;
+}
+
+/* Enhanced hover effects for contact methods */
+.contact-method {
+  transition: var(--transition);
+  padding: 20px;
+  border-radius: var(--border-radius);
+}
+
+.contact-method:hover {
+  background-color: var(--surface-variant);
+  transform: translateY(-5px);
 }

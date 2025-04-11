@@ -1,7 +1,38 @@
 import React, { Suspense, useEffect, useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, useGLTF, useAnimations } from '@react-three/drei';
+import { OrbitControls, useGLTF, useAnimations, Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
+import { random } from 'maath';
+
+// Particle field that will surround the avatar
+function ParticleField({ count = 2000, color = '#a388ee' }) {
+    const points = useRef();
+
+    useFrame((state, delta) => {
+        if (points.current) {
+            points.current.rotation.x -= delta / 10;
+            points.current.rotation.y -= delta / 15;
+        }
+    });
+
+    // Generate random sphere of points
+    const sphere = random.inSphere(new Float32Array(count * 3), { radius: 3 });
+
+    return (
+        <group>
+            <Points ref={points} positions={sphere} stride={30} frustumCulled={false}>
+                <PointMaterial
+                    transparent
+                    color={color}
+                    size={0.03}
+                    sizeAttenuation={true}
+                    depthWrite={false}
+                    opacity={0.7} // Increased opacity for better visibility
+                />
+            </Points>
+        </group>
+    );
+}
 
 function Avatar() {
     const { scene, animations } = useGLTF('/avatar.glb');
@@ -14,62 +45,54 @@ function Avatar() {
             const greetingAction = actions['Greeting'];
             const sittingAction = actions['Sitting'];
 
-            // Reset and play the greeting animation
-            greetingAction.reset().fadeIn(0.5).play();
+            // Play greeting animation if available
+            if (greetingAction) {
+                greetingAction.reset().fadeIn(0.5).play();
+                greetingAction.setLoop(THREE.LoopOnce);
+                greetingAction.clampWhenFinished = true;
 
-            // Set the loop mode and clamp when finished for the greeting animation
-            greetingAction.setLoop(THREE.LoopOnce);
-            greetingAction.clampWhenFinished = true;
+                const startSittingAnimation = () => {
+                    if (greetingAction && sittingAction) {
+                        greetingAction.fadeOut(0.5);
+                        sittingAction.reset().fadeIn(0.5).play();
+                    }
+                };
 
-            // Function to start sitting animation after greeting finishes
-            const startSittingAnimation = () => {
-                greetingAction.fadeOut(0.5);
+                mixer.addEventListener('finished', (event) => {
+                    if (event.action === greetingAction) {
+                        startSittingAnimation();
+                    }
+                });
+
+                return () => {
+                    mixer.removeEventListener('finished', startSittingAnimation);
+                };
+            }
+
+            // Fall back to sitting animation if greeting doesn't exist
+            else if (sittingAction) {
                 sittingAction.reset().fadeIn(0.5).play();
-            };
+            }
 
-            // Listen for the finished event on the mixer
-            mixer.addEventListener('finished', (event) => {
-                if (event.action === greetingAction) {
-                    startSittingAnimation();
-                }
-            });
-
-            // Cleanup event listener on unmount
-            return () => {
-                mixer.removeEventListener('finished', startSittingAnimation);
-            };
+            // If no specific animations found, try playing the first available animation
+            else if (Object.keys(actions).length > 0) {
+                const firstAction = actions[Object.keys(actions)[0]];
+                firstAction.reset().fadeIn(0.5).play();
+            }
         }
     }, [actions, mixer]);
 
-
     useEffect(() => {
         if (ref.current) {
-            // Camera settings
-            camera.position.set(0.2, 0.5, 1); // Adjust the camera position as per setupScene
-            camera.fov = 45; // Set field of view
+            // Camera positioning for better view
+            camera.position.set(0, 0.5, 1.5);
+            camera.fov = 65;
             camera.updateProjectionMatrix();
 
             ref.current.add(camera);
-            camera.lookAt(ref.current.position);
-
-            // Apply scaling to the avatar to adjust its size
-            /*  ref.current.scale.set(1.2, 1.2, 1.2);  */// Adjust the scale to make the avatar larger
-
+            camera.lookAt(new THREE.Vector3(0, 0.8, 0));
         }
 
-        // Handle window resize
-        const handleResize = () => {
-            const container = document.getElementById('avatar-container');
-            if (container) {
-                camera.aspect = container.clientWidth / container.clientHeight;
-                camera.updateProjectionMatrix();
-                gl.setSize(container.clientWidth, container.clientHeight);
-            }
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        // Cleanup on unmount
         return () => {
             if (ref.current) {
                 ref.current.remove(camera);
@@ -77,63 +100,49 @@ function Avatar() {
         };
     }, [camera, ref]);
 
-    return <primitive object={scene} ref={ref} />;
+    return <primitive object={scene} ref={ref} scale={1.2} position={[0, -0.7, 0]} />;
 }
 
-
-function Pedestal() {
-    return (
-        <mesh position={[0, -0.05, 0]} receiveShadow>
-            <cylinderGeometry args={[0.6, 0.6, 0.1, 64]} />
-            <meshStandardMaterial color="#808080" />
-        </mesh>
-    );
-}
-
+// Modern lighting setup
 function Lighting() {
     return (
         <>
-            {/* Ambient Light */}
-            <ambientLight intensity={0.5} />
-
-            {/* Spotlight */}
+            <ambientLight intensity={1.2} /> {/* Increased intensity for better visibility */}
             <spotLight
-                color={0xffffff}
-                intensity={20}
-                distance={8}
-                angle={Math.PI / 4}
-                penumbra={0.5}
-                position={[0, 4, 2]}
+                color="#ffffff"
+                intensity={12} /* Increased intensity */
+                position={[10, 10, 5]}
+                angle={0.5}
+                penumbra={1}
                 castShadow
             />
-
-            {/* Directional Light */}
-            <directionalLight
-                color={0xffffff}
-                intensity={2}
-                position={[1, 1, 2]}
-                castShadow
-            />
+            <pointLight position={[-10, 0, -10]} intensity={2.5} color="#a388ee" /> {/* Enhanced purple light */}
+            <pointLight position={[5, -5, 5]} intensity={1.5} /> {/* Increased intensity */}
         </>
     );
 }
 
 export default function AvatarCanvas() {
     return (
-        <Canvas shadows>
-            <Lighting />
+        <Canvas
+            shadows
+            dpr={[1, 2]}
+            camera={{ position: [0, 0, 5], fov: 45 }}
+            style={{ background: 'transparent' }}
+        >
+            {/* Removed color background and fog for better blending */}
             <Suspense fallback={null}>
                 <Avatar />
-                {/* <Pedestal /> */}
+                <ParticleField />
             </Suspense>
+            <Lighting />
             <OrbitControls
-                enableDamping={true}
                 enablePan={false}
                 enableZoom={false}
-                minDistance={3}
-                minPolarAngle={1.4}
-                maxPolarAngle={1.4}
-                target={[0, 0.75, 0]}
+                rotateSpeed={0.5}
+                minPolarAngle={Math.PI / 2 - 0.5}
+                maxPolarAngle={Math.PI / 2 + 0.5}
+                dampingFactor={0.05}
             />
         </Canvas>
     );
