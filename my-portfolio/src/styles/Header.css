@@ -10,11 +10,77 @@
   transition: var(--transition);
 }
 
+/* Add specific color adjustments for light theme */
+body.light-theme .header {
+  background-color: rgba(240, 240, 240, 0.9);
+}
+
+body.light-theme .nav-links ol li a {
+  color: var(--text-primary);
+  font-weight: 500; /* Slightly bolder for better visibility */
+}
+
+body.light-theme .nav-links ol li a::before {
+  color: var(--primary);
+  font-weight: 600; /* Make the numbers more visible */
+}
+
+body.light-theme .nav-controls button {
+  color: var(--text-primary);
+}
+
+/* Add hover animation for theme toggle button */
+.theme-toggle-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle-btn i {
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+.theme-toggle-btn:hover i {
+  transform: rotate(30deg);
+}
+
+body.light-theme .nav-links ol li a:hover {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+body.light-theme .mobile-menu ol li a:hover {
+  color: var(--primary);
+}
+
+/* Add hover underline effect for light theme navigation links */
+body.light-theme .nav-links ol li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+body.light-theme .nav-links ol li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
 .header.scrolled {
   height: var(--nav-scroll-height);
   transform: translateY(0px);
   box-shadow: var(--shadow);
   background-color: rgba(10, 10, 10, 0.95);
+}
+
+body.light-theme .header.scrolled {
+  background-color: rgba(240, 240, 240, 0.95);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .header.scrolled .logo {
@@ -42,8 +108,10 @@
 .logo a {
   color: var(--primary);
   display: block;
-  font-size: 24px;
+  font-size: 40px;
   font-weight: 700;
+  font-family: "ff-cocon-pro", sans-serif;
+  font-style: normal;
 }
 
 .nav-links {
@@ -70,6 +138,7 @@
   text-decoration: none;
   color: var(--text-primary);
   position: relative;
+  transition: var(--transition);
 }
 
 .nav-links ol li a::before {
@@ -80,8 +149,28 @@
   text-align: right;
 }
 
+/* Add hover underline effect for dark theme navigation links */
+.nav-links ol li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
 .nav-links ol li a:hover {
   color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.nav-links ol li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .nav-controls {

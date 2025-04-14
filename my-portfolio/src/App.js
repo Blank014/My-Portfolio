@@ -8,6 +8,7 @@ import Contact from './sections/Contact';
 import UniWork from './sections/UniWork';
 import Hobbies from './sections/Hobbies';
 import { ThemeProvider } from './context/ThemeContext';
+import { LanguageProvider } from './context/LanguageContext';
 
 const App = () => {
   // State for loading screen
@@ -124,55 +125,57 @@ const App = () => {
 
   return (
     <ThemeProvider>
-      {loading ? (
-        // Enhanced loading screen
-        <div className="loading">
-          <div className="loading-content">
-            <div className="logo">D.</div>
-            <div className="loading-bar">
-              <div className="loading-bar-fill"></div>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="App">
-          {/* Custom cursor */}
-          <div ref={cursorOuterRef} className="cursor-outer"></div>
-          <div ref={cursorInnerRef} className="cursor-inner"></div>
-
-          {/* Spotlight effect */}
-          <div ref={spotlightRef} className="spotlight"></div>
-
-          {/* Scroll progress indicator */}
-          <div ref={scrollProgressRef} className="scroll-progress"></div>
-
-          {/* Scroll to top button */}
-          <div
-            className={`scroll-to-top ${showScrollTop ? 'visible' : ''}`}
-            onClick={scrollToTop}
-            aria-label="Scroll to top"
-          >
-            <i className="fas fa-arrow-up"></i>
-          </div>
-
-          <Header />
-          <main className="main-content">
-            <Home />
-            <About />
-            <UniWork />
-            <Projects />
-            <Hobbies />
-            <Contact />
-          </main>
-          <footer className="footer">
-            <div className="container">
-              <div className="footer-content">
-                <p>Designed & Built by Your Name</p>
+      <LanguageProvider>
+        {loading ? (
+          // Enhanced loading screen
+          <div className="loading">
+            <div className="loading-content">
+              <div className="logo">IK.</div>
+              <div className="loading-bar">
+                <div className="loading-bar-fill"></div>
               </div>
             </div>
-          </footer>
-        </div>
-      )}
+          </div>
+        ) : (
+          <div className="App">
+            {/* Custom cursor */}
+            <div ref={cursorOuterRef} className="cursor-outer"></div>
+            <div ref={cursorInnerRef} className="cursor-inner"></div>
+
+            {/* Spotlight effect */}
+            <div ref={spotlightRef} className="spotlight"></div>
+
+            {/* Scroll progress indicator */}
+            <div ref={scrollProgressRef} className="scroll-progress"></div>
+
+            {/* Scroll to top button */}
+            <div
+              className={`scroll-to-top ${showScrollTop ? 'visible' : ''}`}
+              onClick={scrollToTop}
+              aria-label="Scroll to top"
+            >
+              <i className="fas fa-arrow-up"></i>
+            </div>
+
+            <Header />
+            <main className="main-content">
+              <Home />
+              <About />
+              <UniWork />
+              <Projects />
+              <Hobbies />
+              <Contact />
+            </main>
+            <footer className="footer">
+              <div className="container">
+                <div className="footer-content">
+                  <p>Designed & Built by Your Name</p>
+                </div>
+              </div>
+            </footer>
+          </div>
+        )}
+      </LanguageProvider>
     </ThemeProvider>
   );
 };

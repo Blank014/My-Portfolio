@@ -1,56 +1,60 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Home.css";
+import "../styles/TextScramble.css";
 import AvatarCanvas from '../components/AvatarCanvas';
 import { useTranslation } from "react-i18next";
+import TextScramble from "../components/shared/TextScramble";
 
 const Home = () => {
   const { t } = useTranslation();
-  const [text, setText] = useState("");
-  const [isTyping, setIsTyping] = useState(true);
+  const [showNameScramble, setShowNameScramble] = useState(true);
+  const [name, setName] = useState("");
 
-  // Roles for typing effect
-  const roles = ["Developer", "Designer", "Problem Solver"];
-  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const currentRole = roles[currentRoleIndex];
+  // Matrix quotes for the role section
+  const matrixPhrases = [
+    "Developer",
+    "Designer",
+    "Photographer",
 
+  ];
+
+  // Matrix quotes for intro effect (optional)
+  const matrixIntroQuotes = [
+    "Welcome to the real world",
+    "Follow the white rabbit",
+    "There is no spoon",
+    "Free your mind"
+  ];
+
+  // Set the name from translation once available
   useEffect(() => {
-    let timeout;
-    // Typing effect
-    if (isTyping && text.length < currentRole.length) {
-      timeout = setTimeout(() => {
-        setText(currentRole.substring(0, text.length + 1));
-      }, 100);
-    } else if (text === currentRole) {
-      // Pause at the end of typing
-      timeout = setTimeout(() => {
-        setIsTyping(false);
-      }, 1500);
-    } else if (!isTyping && text.length > 0) {
-      // Deleting effect
-      timeout = setTimeout(() => {
-        setText(text.substring(0, text.length - 1));
-      }, 50);
-    } else if (!isTyping && text === "") {
-      // Switch to next role
-      setCurrentRoleIndex((currentRoleIndex + 1) % roles.length);
-      setIsTyping(true);
-    }
+    const translatedName = t("Imad-Eddin") || "Imad";
+    setName(translatedName);
 
-    return () => clearTimeout(timeout);
-  }, [text, isTyping, currentRole, currentRoleIndex]);
+    // Only show the name scramble animation on initial load
+    const timer = setTimeout(() => {
+      setShowNameScramble(false);
+    }, 4000); // After name animation completes
+
+    return () => clearTimeout(timer);
+  }, [t]);
 
   return (
     <section id="home" className="hero">
       <div className="hero-content">
         <p className="hero-greeting fade-in">Hi, my name is</p>
-        <h1 className="hero-title fade-in delay-100">{t("name") || "Your Name"}</h1>
+        <h1 className="hero-title fade-in delay-100">
+          <TextScramble text={name} delay={200} />
+        </h1>
         <h2 className="hero-subtitle fade-in delay-200">
-          I'm a <span className="typed-text">{text}</span>
+          I'm a <TextScramble
+            phrases={matrixPhrases}
+            className="typed-text"
+            delay={2000}
+          />
           <span className="typed-cursor"></span>
         </h2>
-        <p className="hero-description fade-in delay-300">
-          {t("intro") || "I'm a software developer specializing in building exceptional digital experiences. Currently, I'm focused on building accessible, human-centered products."}
-        </p>
+
 
         <div className="hero-buttons fade-in delay-400">
           <a href="#projects" className="primary-button">View My Work</a>

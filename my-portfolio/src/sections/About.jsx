@@ -3,6 +3,8 @@ import "../styles/About.css";
 import "../styles/SkillBar.css";
 import { useTranslation } from "react-i18next";
 import SkillBar from "../components/shared/SkillBar";
+// Import the profile image
+import profileImage from "../assets/images/Profile_.jpg";
 
 const About = () => {
   const { t } = useTranslation();
@@ -10,49 +12,47 @@ const About = () => {
 
   // Skills with proficiency levels
   const skillsData = [
-    { name: "JavaScript (ES6+)", level: 92 },
-    { name: "React", level: 90 },
-    { name: "Node.js", level: 85 },
-    { name: "TypeScript", level: 80 },
-    { name: "Three.js", level: 75 },
+    { name: "JavaScript", level: 75 },
+    { name: "React", level: 70 },
+    { name: "Node.js", level: 40 },
+    { name: "Three.js", level: 50 },
     { name: "HTML & CSS", level: 95 },
     { name: "Responsive Design", level: 88 },
-    { name: "RESTful APIs", level: 87 }
+    { name: "Flutter", level: 65 },
+    { name: "Python", level: 85 },
+    { name: "C & C++", level: 70 },
+    { name: "Java", level: 80 },
+    { name: "Linux", level: 90 }
   ];
 
   // Education data
   const educationData = [
     {
-      degree: "Master of Science in Computer Science",
-      institution: "University of Technology",
-      year: "2020-2022",
-      description: "Specialized in Web Technologies and Human-Computer Interaction"
+      degree: "A-Levels",
+      institution: "Freiberg College",
+      year: "2018-2021",
+      description: "Focus on Mathematics and English"
     },
     {
-      degree: "Bachelor of Science in Computer Science",
-      institution: "City University",
-      year: "2016-2020",
-      description: "Focus on Software Engineering and Database Systems"
+      degree: "Computer Science Student",
+      institution: "Technical University of Braunschweig",
+      year: "2021-Present",
+      description: "Focus on Software Engineering"
     }
   ];
 
   // Certifications
   const certificationsData = [
     {
-      name: "AWS Certified Developer",
-      issuer: "Amazon Web Services",
-      year: "2023"
+      name: "Python Certified Developer",
+      issuer: "openHPI",
+      year: "2020"
     },
     {
-      name: "Full Stack Web Development",
-      issuer: "Udacity",
-      year: "2021"
+      name: "Full-Stack Web Development",
+      issuer: "Udemy",
+      year: "2024"
     },
-    {
-      name: "React Advanced Patterns",
-      issuer: "Frontend Masters",
-      year: "2022"
-    }
   ];
 
   const renderTabContent = () => {
@@ -109,17 +109,6 @@ const About = () => {
 
         <div className="about-container">
           <div className="about-content fade-in">
-            <p>
-              Hello! I'm a developer passionate about building digital experiences that are both
-              functional and beautiful. My journey in web development began during university,
-              where I discovered my love for creating things that live on the internet.
-            </p>
-
-            <p>
-              My focus is on crafting accessible, responsive, and engaging user interfaces
-              that solve real-world problems. I enjoy working on the full stack, from
-              designing intuitive UI/UX to implementing robust backend systems.
-            </p>
 
             <p>
               {t("aboutText")}
@@ -154,7 +143,7 @@ const About = () => {
             </div>
 
             <div className="resume-download">
-              <a href="/resume.pdf" className="primary-button" target="_blank" rel="noopener noreferrer">
+              <a href="/Lebenslauf.pdf" className="primary-button" target="_blank" rel="noopener noreferrer">
                 <i className="fas fa-file-download"></i> Download Resume
               </a>
             </div>
@@ -164,7 +153,7 @@ const About = () => {
             <div className="about-image-wrapper">
               <img
                 className="about-image"
-                src="https://via.placeholder.com/300x300"
+                src={profileImage}
                 alt="Profile"
               />
             </div>

@@ -27,7 +27,7 @@ function ParticleField({ count = 2000, color = '#a388ee' }) {
                     size={0.03}
                     sizeAttenuation={true}
                     depthWrite={false}
-                    opacity={0.7} // Increased opacity for better visibility
+                    opacity={1} // Increased opacity for better visibility
                 />
             </Points>
         </group>
@@ -47,7 +47,7 @@ function Avatar() {
 
             // Play greeting animation if available
             if (greetingAction) {
-                greetingAction.reset().fadeIn(0.5).play();
+                greetingAction.reset().fadeIn(0).play();
                 greetingAction.setLoop(THREE.LoopOnce);
                 greetingAction.clampWhenFinished = true;
 
@@ -85,10 +85,9 @@ function Avatar() {
     useEffect(() => {
         if (ref.current) {
             // Camera positioning for better view
-            camera.position.set(0, 0.5, 1.5);
+            camera.position.set(0, 1, 2.3);
             camera.fov = 65;
             camera.updateProjectionMatrix();
-
             ref.current.add(camera);
             camera.lookAt(new THREE.Vector3(0, 0.8, 0));
         }

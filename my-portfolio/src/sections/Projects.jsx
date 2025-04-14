@@ -178,51 +178,7 @@ const Projects = () => {
             ))}
           </div>
 
-          <div className="other-projects-grid">
-            {filteredProjects.map((project, i) => (
-              <AnimatedSection
-                key={i}
-                className="other-project"
-                animation="fade-in-up"
-                threshold={0.1}
-                delay={i * 100}
-              >
-                <div className="project-top">
-                  <div className="folder-icon">
-                    <i className="fas fa-folder"></i>
-                  </div>
-                  <div className="other-project-links">
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub Link">
-                      <i className="fab fa-github"></i>
-                    </a>
-                    <a href={project.external} target="_blank" rel="noopener noreferrer" aria-label="External Link">
-                      <i className="fas fa-external-link-alt"></i>
-                    </a>
-                  </div>
-                </div>
 
-                <h3 className="other-project-title">
-                  <a href={project.external} target="_blank" rel="noopener noreferrer">
-                    {project.title}
-                  </a>
-                </h3>
-
-                <div className="other-project-description">
-                  <p>{project.description}</p>
-                </div>
-
-                <ul className="other-project-tech-list">
-                  {project.tech.map((tech, index) => (
-                    <li key={index}>{tech}</li>
-                  ))}
-                </ul>
-
-                <div className="project-category">
-                  <span>{project.category}</span>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
         </AnimatedSection>
 
         <AnimatedSection

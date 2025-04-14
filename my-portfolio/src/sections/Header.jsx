@@ -1,24 +1,19 @@
-import { useTranslation } from "react-i18next";
 import React, { useState, useEffect } from "react";
 import "../styles/Header.css";
 import { useTheme } from "../context/ThemeContext";
+import { useLanguage } from "../context/LanguageContext";
+import TranslatedText from "../components/shared/TranslatedText";
+import LanguageSwitcher from "../components/shared/LanguageSwitcher";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { t, i18n } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
-  const [language, setLanguage] = useState("en");
-  const { toggleTheme } = useTheme();
+  const { toggleTheme, isDarkTheme } = useTheme();
+  const { t } = useLanguage();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     document.body.style.overflow = !isOpen ? 'hidden' : 'auto';
-  };
-
-  const toggleLanguage = () => {
-    const newLang = language === "en" ? "de" : "en";
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang);
   };
 
   useEffect(() => {
@@ -54,7 +49,7 @@ const Header = () => {
         <div className="nav-container">
           <div className="logo">
             <a href="#home" aria-label="home">
-              <span className="logo-text">D.</span>
+              <span className="logo-text">IK.</span>
             </a>
           </div>
 
@@ -62,17 +57,21 @@ const Header = () => {
             <ol>
               {navLinks.map((link, i) => (
                 <li key={i}>
-                  <a href={link.url}>{link.name}</a>
+                  <a href={link.url}>
+                    {i === 0 ? link.name : <TranslatedText textKey={link.name.toLowerCase()} />}
+                  </a>
                 </li>
               ))}
             </ol>
 
             <div className="nav-controls">
-              <button onClick={toggleLanguage} aria-label="Change Language">
-                {language === "en" ? "DE" : "EN"}
-              </button>
-              <button onClick={toggleTheme} aria-label="Toggle Theme">
-                <i className="fas fa-moon"></i>
+              <LanguageSwitcher variant="modern" />
+              <button
+                onClick={toggleTheme}
+                aria-label={isDarkTheme ? "Switch to Light Theme" : "Switch to Dark Theme"}
+                className="theme-toggle-btn"
+              >
+                <i className={`fas ${isDarkTheme ? 'fa-sun' : 'fa-moon'}`}></i>
               </button>
             </div>
           </div>
@@ -94,17 +93,16 @@ const Header = () => {
           {navLinks.map((link, i) => (
             <li key={i}>
               <a href={link.url} onClick={closeMenu}>
-                {link.name}
+                {i === 0 ? link.name : <TranslatedText textKey={link.name.toLowerCase()} />}
               </a>
             </li>
           ))}
         </ol>
         <div className="button-container">
-          <button onClick={toggleLanguage} className="primary-button">
-            {language === "en" ? "Deutsch" : "English"}
-          </button>
+          <LanguageSwitcher variant="text" />
           <button onClick={toggleTheme} className="primary-button">
-            {t("toggleTheme")}
+            <i className={`fas ${isDarkTheme ? 'fa-sun' : 'fa-moon'} me-2`}></i>
+            <TranslatedText textKey="toggleTheme" />
           </button>
         </div>
       </div>
