@@ -10,34 +10,34 @@ const UniWork = () => {
     {
       id: 1,
       type: "education",
-      year: "2020-2024",
-      title: "Bachelor's Degree in Computer Science",
-      location: "University Name, City",
-      description: "Focused on web development, algorithms, and data structures. Participated in various hackathons and coding competitions."
+      year: "2021-Present",
+      title: "Bachelor Student in Computer Science",
+      location: "Technical University of Braunschweig, Germany",
+      description: "Focused on web/app development. Learning about algorithms, data structures, and software engineering principles."
     },
     {
       id: 2,
       type: "work",
-      year: "2023-Present",
-      title: "Frontend Developer",
-      location: "Company Name, City",
-      description: "Developing responsive web applications using React. Working with a team to implement new features and maintain existing codebase."
+      year: "2024-Present",
+      title: "Python Developer",
+      location: "MPA, Braunschweig",
+      description: "Developing a responsive desktop application serving as an internal tool using Python."
     },
     {
       id: 3,
       type: "education",
-      year: "2019-2020",
-      title: "Web Development Bootcamp",
-      location: "Coding Academy, City",
-      description: "Intensive program covering full-stack development with JavaScript, React, Node.js, and MongoDB."
+      year: "2024",
+      title: "Full-Stack Web Development Bootcamp",
+      location: "Udemy",
+      description: "Intensive course covering full-stack development with HTML, CSS, Javascript, Node, React, PostgreSQL, Web3 and DApps"
     },
     {
       id: 4,
       type: "work",
-      year: "2021-2023",
-      title: "Web Design Intern",
-      location: "Design Studio, City",
-      description: "Created UI designs and implemented them using HTML, CSS, and JavaScript. Collaborated with senior designers on client projects."
+      year: "2024-Present",
+      title: "System Administrator",
+      location: "IFAS TU Braunschweig, City",
+      description: "Maintaining and managing the institute's IT infrastructure, ensuring smooth operation of systems and networks."
     }
   ];
 

@@ -125,7 +125,7 @@ a:hover {
   width: 300px;
   height: 1px;
   margin-left: 20px;
-  background-color: var(--border);
+  background-color: var(--primary);
 }
 
 .numbered-heading {

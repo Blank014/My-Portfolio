@@ -81,8 +81,9 @@
 
 .about-image-container {
   position: relative;
-  max-width: 300px;
+  max-width: 400px;
   width: 100%;
+  margin-top: -280px; /* Add negative margin to move the image up */
 }
 
 .about-image-wrapper {
@@ -138,10 +139,38 @@
   border-bottom: 1px solid var(--border);
   overflow-x: auto;
   scrollbar-width: none; /* Firefox */
+  position: relative;
 }
 
 .about-tabs::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
+}
+
+.tab-spacer {
+  flex-grow: 1;
+}
+
+.resume-download-button {
+  color: var(--text-secondary);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  margin-right: 10px;
+  padding: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  border: none;
+}
+
+.resume-download-button:hover {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.resume-download-button i {
+  font-size: 18px;
 }
 
 .about-tab-button {
@@ -205,17 +234,22 @@
 
 /* Education content styles */
 .education-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
   padding: 20px 0;
 }
 
 .education-item {
-  position: relative;
-  padding: 20px;
-  margin-bottom: 20px;
+  flex: 1 1 calc(50% - 15px);
   background-color: var(--surface-variant);
   border-radius: var(--border-radius);
+  padding: 20px;
   transition: transform 0.3s, box-shadow 0.3s;
-  border-left: 3px solid var(--primary);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
 }
 
 .education-item:hover {
@@ -223,27 +257,35 @@
   box-shadow: var(--shadow);
 }
 
+.education-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+}
+
 .education-year {
   display: inline-block;
-  padding: 4px 12px;
-  background: rgba(128, 43, 177, 0.2);
-  border-radius: 30px;
   color: var(--primary);
   font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 
 .education-degree {
   font-size: 18px;
-  margin: 0 0 5px;
+  margin: 0 0 8px;
   color: var(--text-primary);
+  padding-right: 0;
 }
 
 .education-institution {
   color: var(--text-secondary);
-  font-size: 16px;
-  margin-bottom: 10px;
+  font-size: 14px;
+  
 }
 
 .education-description {
@@ -289,18 +331,18 @@
 }
 
 .certification-year {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  color: var(--text-secondary);
+  display: inline-block;
+  color: var(--primary);
   font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 
 .certification-name {
   font-size: 18px;
   margin: 0 0 8px;
   color: var(--text-primary);
-  padding-right: 60px; /* Make space for the year */
+  padding-right: 0;
 }
 
 .certification-issuer {
@@ -336,7 +378,8 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .certification-item {
+  .certification-item,
+  .education-item {
     flex: 1 1 100%;
   }
 }
