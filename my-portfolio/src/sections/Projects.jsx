@@ -18,26 +18,22 @@ const Projects = () => {
       tech: ["React", "Three.js", "CSS"],
       github: "https://github.com/yourusername/portfolio",
       external: "#",
-      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
+      image: require("../assets/images/Portfolio website.png"),
       category: "web"
     },
     {
-      title: "E-commerce Platform",
-      description: "Full-stack e-commerce application with user authentication, product management, shopping cart functionality and payment gateway integration. Includes an admin dashboard for inventory management.",
-      tech: ["Node.js", "MongoDB", "React", "Redux"],
-      github: "https://github.com/yourusername/ecommerce",
-      external: "#",
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3",
-      category: "web"
+      title: "Tree of Life Todo App",
+      description: "A simple and elegant todo application that allows users to create, edit, and delete tasks. The app features a clean UI and intuitive design.",
+      tech: ["Flutter", "Riverpod", "Supabase", "CI/CD"],
+      image: require("../assets/images/Tree-of-Life.png"),
+      category: "Cross-Platform",
     },
     {
-      title: "Weather App",
-      description: "Real-time weather application that provides current conditions and forecasts using multiple weather APIs. Features include location detection, search functionality, and animated weather icons.",
-      tech: ["JavaScript", "APIs", "CSS"],
-      github: "https://github.com/yourusername/weather-app",
-      external: "#",
-      image: "https://images.unsplash.com/photo-1592210454359-9043f067919b",
-      category: "mobile"
+      title: "Troveox Catalog -WIP-",
+      description: "A comprehensive catalog application that allows users to browse and manage a collection of items. The app features a user-friendly interface and powerful search functionality.",
+      tech: ["React", "Django"],
+      image: null,
+      category: "web",
     }
   ];
 
@@ -144,15 +140,19 @@ const Projects = () => {
                 </div>
               </div>
 
-              <div className="project-image-container">
-                <a href={project.external} target="_blank" rel="noopener noreferrer">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="project-image"
-                  />
-                </a>
-              </div>
+              {project.image ? (
+                <div className="project-image-container">
+                  <a href={project.external} target="_blank" rel="noopener noreferrer">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="project-image"
+                    />
+                  </a>
+                </div>
+              ) : (
+                <div className="project-placeholder"></div>
+              )}
             </AnimatedSection>
           ))}
         </div>
@@ -181,15 +181,6 @@ const Projects = () => {
 
         </AnimatedSection>
 
-        <AnimatedSection
-          className="view-more-section"
-          animation="fade-in"
-          delay={500}
-        >
-          <a href="https://github.com/yourusername" className="primary-button view-more-button" target="_blank" rel="noopener noreferrer">
-            View More on GitHub <i className="fas fa-arrow-right"></i>
-          </a>
-        </AnimatedSection>
       </div>
     </section>
   );

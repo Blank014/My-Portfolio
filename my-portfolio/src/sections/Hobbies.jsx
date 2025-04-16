@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Hobbies.css";
-import { useTranslation } from "react-i18next";
+import { useLanguage } from "../context/LanguageContext";
+import PhotoGallery from "../components/PhotoGallery/PhotoGallery";
 
 const Hobbies = () => {
-  const { t } = useTranslation();
+  const { t } = useLanguage();
+  const [showPhotoGallery, setShowPhotoGallery] = useState(false);
 
   // Example hobbies data - replace with your actual hobbies
   const hobbiesData = [
@@ -40,15 +42,34 @@ const Hobbies = () => {
 
       <div className="hobbies-grid">
         {hobbiesData.map((hobby) => (
-          <div className="hobby-card" key={hobby.id}>
+          <div
+            className="hobby-card"
+            key={hobby.id}
+            onClick={() => {
+              if (hobby.id === 1) { // Photography hobby
+                setShowPhotoGallery(!showPhotoGallery);
+              }
+            }}
+          >
             <div className="hobby-icon">
               {hobby.icon}
             </div>
             <h3 className="hobby-title">{hobby.title}</h3>
             <p className="hobby-description">{hobby.description}</p>
+            {hobby.id === 1 && (
+              <button className="view-photos-btn">
+                {showPhotoGallery ? t("hidePhotos") : t("viewPhotos")}
+              </button>
+            )}
           </div>
         ))}
       </div>
+
+      {showPhotoGallery && (
+        <div className="photo-gallery-container">
+          <PhotoGallery />
+        </div>
+      )}
     </section>
   );
 };

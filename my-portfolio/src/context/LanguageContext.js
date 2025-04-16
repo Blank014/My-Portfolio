@@ -20,7 +20,9 @@ const resources = {
             workDetails: "I have worked at [Your Company] as a [Your Position].",
             hobbies: "Hobbies",
             hobbiesDetails: "In my free time, I enjoy [Your Hobbies].",
-            toggleTheme: "Toggle Theme"
+            toggleTheme: "Toggle Theme",
+            viewPhotos: "View Photos",
+            hidePhotos: "Hide Photos"
         }
     },
     de: {
@@ -39,7 +41,9 @@ const resources = {
             workDetails: "Ich habe bei [Your Company] als [Your Position] gearbeitet.",
             hobbies: "Hobbys",
             hobbiesDetails: "In meiner Freizeit genieße ich [Your Hobbies].",
-            toggleTheme: "Thema umschalten"
+            toggleTheme: "Thema umschalten",
+            viewPhotos: "Fotos anzeigen",
+            hidePhotos: "Fotos ausblenden"
         }
     }
 };
