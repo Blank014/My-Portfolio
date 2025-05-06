@@ -1,5 +1,7 @@
 .hobbies {
     padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .hobbies h2 {
@@ -35,23 +37,33 @@
 
 .hobbies-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
     margin-top: 30px;
+}
+
+/* New centered grid */
+.hobbies-grid-center {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 400px));
+    gap: 40px;
+    margin: 40px auto;
+    justify-content: center;
 }
 
 .hobby-card {
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
-    padding: 25px;
+    padding: 35px;
     text-align: center;
     box-shadow: var(--shadow);
-    transition: var(--transition);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
+    cursor: pointer;
 }
 
 .hobby-card:hover {
@@ -59,58 +71,70 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Icon styles */
 .hobby-icon {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    background-color: var(--secondary);
-    color: white;
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.hobby-icon i {
     font-size: 2rem;
-    margin-bottom: 15px;
-    transition: var(--transition);
+    color: white;
 }
 
 .hobby-card:hover .hobby-icon {
-    transform: scale(1.1);
-    background-color: var(--accent);
+    transform: translateY(-5px) scale(1.05);
 }
 
 .hobby-title {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     color: var(--accent);
 }
 
 .hobby-description {
     font-size: 1rem;
     line-height: 1.6;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+/* Button styles - updated to match site's design language */
+.view-photos-btn, .goodreads-btn {
+    margin-top: auto;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+
+.view-photos-btn:hover, .goodreads-btn:hover {
+    background-color: rgba(128, 43, 177, 0.1);
+    transform: translateY(-3px);
 }
 
 /* Photo gallery integration */
-.view-photos-btn {
-    margin-top: 15px;
-    padding: 8px 15px;
-    background-color: var(--secondary);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: var(--transition);
-}
-
-.view-photos-btn:hover {
-    background-color: var(--accent);
-    transform: translateY(-2px);
-}
-
 .photo-gallery-container {
     margin-top: 40px;
-    padding: 20px;
+    padding: 25px;
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
@@ -142,5 +166,9 @@
     .photo-gallery-container {
         padding: 15px;
         margin-top: 30px;
+    }
+    
+    .hobbies-grid-center {
+        grid-template-columns: minmax(280px, 400px);
     }
 }
