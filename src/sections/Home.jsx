@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Home.css";
 import "../styles/TextScramble.css";
-import AvatarCanvas from '../components/AvatarCanvas';
+import AvatarCanvas from '../components/AvatarCanvas.jsx';
 import { useTranslation } from "react-i18next";
 import TextScramble from "../components/shared/TextScramble";
 

@@ -29,7 +29,3 @@ const MobileLayout = () => {
 };
 
 export default MobileLayout;
-
-
-
-

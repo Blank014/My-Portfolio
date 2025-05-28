@@ -32,7 +32,3 @@ const DesktopLayout = () => {
 };
 
 export default DesktopLayout;
-
-
-
-

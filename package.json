@@ -2,6 +2,7 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://blank014.github.io/My-Portfolio",
   "dependencies": {
     "@react-three/drei": "^9.109.2",
     "@react-three/fiber": "^8.16.8",
@@ -18,12 +19,13 @@
     "react-router-dom": "^6.6.1",
     "react-scripts": "^5.0.1",
     "three": "^0.167.1"
-  },
-  "scripts": {
+  },  "scripts": {
     "start": " react-scripts --openssl-legacy-provider start",
     "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts  test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
@@ -40,6 +42,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
     "customize-cra": "^1.0.0",
+    "gh-pages": "^6.3.0",
     "react-app-rewired": "^2.2.1"
   }
 }

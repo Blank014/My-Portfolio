@@ -1,4 +1,3 @@
-// filepath: c:\Users\imadk\Desktop\Projects\React\My-Portfolio\my-portfolio\src\components\AvatarCanvas.jsx
 import React, { Suspense, useEffect, useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, useGLTF, useAnimations, Points, PointMaterial } from '@react-three/drei';
@@ -36,7 +35,7 @@ function ParticleField({ count = 2000, color = '#a388ee' }) {
 }
 
 function Avatar() {
-    const { scene, animations } = useGLTF('/avatar.glb');
+    const { scene, animations } = useGLTF(`${process.env.PUBLIC_URL}/avatar.glb`);
     const { actions, mixer } = useAnimations(animations, scene);
     const { camera } = useThree();
     const ref = useRef();
