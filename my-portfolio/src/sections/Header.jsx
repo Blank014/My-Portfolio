@@ -54,14 +54,13 @@ const Header = () => {
           </div>
 
           <div className="nav-links">
-            <ol>
-              {navLinks.map((link, i) => (
-                <li key={i}>
-                  <a href={link.url}>
-                    {i === 0 ? link.name : <TranslatedText textKey={link.name.toLowerCase()} />}
-                  </a>
-                </li>
-              ))}
+            <ol>              {navLinks.map((link, i) => (
+              <li key={i}>
+                <a href={link.url}>
+                  {i === 0 ? link.name : <TranslatedText textKey={link.name} />}
+                </a>
+              </li>
+            ))}
             </ol>
 
             <div className="nav-controls">
@@ -89,14 +88,13 @@ const Header = () => {
       </header>
 
       <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
-        <ol>
-          {navLinks.map((link, i) => (
-            <li key={i}>
-              <a href={link.url} onClick={closeMenu}>
-                {i === 0 ? link.name : <TranslatedText textKey={link.name.toLowerCase()} />}
-              </a>
-            </li>
-          ))}
+        <ol>          {navLinks.map((link, i) => (
+          <li key={i}>
+            <a href={link.url} onClick={closeMenu}>
+              {i === 0 ? link.name : <TranslatedText textKey={link.name} />}
+            </a>
+          </li>
+        ))}
         </ol>
         <div className="button-container">
           <LanguageSwitcher variant="text" />

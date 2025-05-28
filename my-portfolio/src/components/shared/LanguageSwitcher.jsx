@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import '../../styles/LanguageSwitch.css';
+import '../../styles/LanguageSwitcher.css';
 
 const LanguageSwitcher = ({ variant = 'icon' }) => {
     const { language, toggleLanguage, isChanging } = useLanguage();

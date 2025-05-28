@@ -1,3 +1,4 @@
+// filepath: c:\Users\imadk\Desktop\Projects\React\My-Portfolio\my-portfolio\src\components\AvatarCanvas.jsx
 import React, { Suspense, useEffect, useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, useGLTF, useAnimations, Points, PointMaterial } from '@react-three/drei';

@@ -169,7 +169,7 @@ const App = () => {
             <footer className="footer">
               <div className="container">
                 <div className="footer-content">
-                  <p>Designed & Built by Your Name</p>
+                  <p>&copy; {new Date().getFullYear()} IK. All rights reserved.</p>
                 </div>
               </div>
             </footer>

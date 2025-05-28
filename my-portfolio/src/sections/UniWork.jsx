@@ -36,7 +36,7 @@ const UniWork = () => {
       type: "work",
       year: "2024-Present",
       title: "System Administrator",
-      location: "IFAS TU Braunschweig, City",
+      location: "IFAS TU Braunschweig",
       description: "Maintaining and managing the institute's IT infrastructure, ensuring smooth operation of systems and networks."
     }
   ];

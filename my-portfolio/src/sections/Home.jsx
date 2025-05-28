@@ -70,25 +70,25 @@ const Home = () => {
       <div className="hero-social fade-in">
         <ul>
           <li>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <a href="https://github.com/Blank014" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <i className="fab fa-github"></i>
             </a>
           </li>
           <li>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <a href="https://linkedin.com/in/imad-eddin-alkuzbari" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <i className="fab fa-linkedin-in"></i>
             </a>
           </li>
           <li>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-              <i className="fab fa-twitter"></i>
+            <a href="https://x.com/imad_alkuzbari" target="_blank" rel="noopener noreferrer" aria-label="X (formerly Twitter)">
+              <i className="fab fa-x"></i>
             </a>
           </li>
         </ul>
       </div>
 
       <div className="hero-email fade-in">
-        <a href="mailto:email@example.com">email@example.com</a>
+        <a href="mailto:imadkuzbari@gmail.com">imadkuzbari@gmail.com</a>
       </div>
     </section>
   );

@@ -7,7 +7,7 @@ const resources = {
     en: {
         translation: {
             welcome: "Welcome to My Portfolio",
-            intro: "Hello! I'm [Your Name], a [Your Profession].",
+            intro: "",
             about: "About Me",
             aboutText: "I'm a motivated computer science student with a passion for software development. I have solid experience with various programming languages, web technologies, and operating systems. I enjoy solving problems, adapting to new challenges, and continuously improving my skills. I'm always looking for opportunities to grow through hands-on projects and lifelong learning.",
             projects: "Projects",
@@ -15,9 +15,9 @@ const resources = {
             findMe: "You can find me on:",
             uniWork: "Uni & Work",
             education: "Education",
-            educationDetails: "I studied [Your Degree] at [Your University].",
+            educationDetails: "",
             work: "Work Experience",
-            workDetails: "I have worked at [Your Company] as a [Your Position].",
+            workDetails: "",
             hobbies: "Hobbies",
             hobbiesDetails: "",
             toggleTheme: "Toggle Theme",
@@ -28,7 +28,7 @@ const resources = {
     de: {
         translation: {
             welcome: "Willkommen in meinem Portfolio",
-            intro: "Hallo! Ich bin [Your Name], ein [Your Profession].",
+            intro: "",
             about: "Über mich",
             aboutText: "Ich bin ein motivierter Informatikstudent mit einer Leidenschaft für Softwareentwicklung. Ich habe fundierte Erfahrungen mit verschiedenen Programmiersprachen, Webtechnologien und Betriebssystemen. Es macht mir Spaß, Probleme zu lösen, mich neuen Herausforderungen anzupassen und meine Fähigkeiten ständig weiterzuentwickeln. Ich bin immer auf der Suche nach Möglichkeiten, durch praktische Projekte und lebenslanges Lernen zu wachsen.",
             projects: "Projekte",
@@ -36,9 +36,9 @@ const resources = {
             findMe: "Sie können mich finden auf:",
             uniWork: "Uni & Arbeit",
             education: "Bildung",
-            educationDetails: "Ich habe [Your Degree] an der [Your University] studiert.",
+            educationDetails: "",
             work: "Berufserfahrung",
-            workDetails: "Ich habe bei [Your Company] als [Your Position] gearbeitet.",
+            workDetails: "",
             hobbies: "Hobbys",
             hobbiesDetails: "",
             toggleTheme: "Thema umschalten",

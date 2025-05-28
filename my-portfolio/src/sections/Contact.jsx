@@ -9,87 +9,29 @@ const Contact = () => {
     email: "",
     message: ""
   });
-
-  const [formStatus, setFormStatus] = useState({
-    submitting: false,
-    submitted: false,
-    error: null
-  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState(null);
 
   const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData(prevData => ({
-      ...prevData,
-      [id]: value
-    }));
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
-      setFormStatus({
-        submitting: false,
-        submitted: false,
-        error: "Please fill out all fields."
-      });
-      return;
-    }
+    // Simulate form submission
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setFormStatus({ type: 'success', message: 'Your message has been sent successfully!' });
+      setFormData({ name: "", email: "", message: "" });
 
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      setFormStatus({
-        submitting: false,
-        submitted: false,
-        error: "Please enter a valid email address."
-      });
-      return;
-    }
-
-    // Set submitting state
-    setFormStatus({
-      submitting: true,
-      submitted: false,
-      error: null
-    });
-
-    try {
-      // For demonstration, we're simulating an API call
-      // In a real implementation, you would use a service like EmailJS, Formspree, or your own backend
-      await new Promise(resolve => setTimeout(resolve, 1500));
-
-      // Success!
-      setFormStatus({
-        submitting: false,
-        submitted: true,
-        error: null
-      });
-
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        message: ""
-      });
-
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setFormStatus(prev => ({
-          ...prev,
-          submitted: false
-        }));
-      }, 5000);
-
-    } catch (error) {
-      // Error handling
-      setFormStatus({
-        submitting: false,
-        submitted: false,
-        error: "Something went wrong. Please try again later."
-      });
-    }
+      // Clear success message after 5 seconds
+      setTimeout(() => setFormStatus(null), 5000);
+    }, 1500);
   };
 
   return (
@@ -103,62 +45,24 @@ const Contact = () => {
           I'll try my best to get back to you!
         </p>
 
-        <a href="mailto:your.email@example.com" className="primary-button contact-button">
-          Say Hello
-        </a>
-
-        <div className="contact-methods">
-          <div className="contact-method">
-            <div className="contact-icon">
-              <i className="fas fa-envelope"></i>
+        <div className="contact-form-container">
+          {formStatus && (
+            <div className={`form-${formStatus.type}`}>
+              <i className={`fas ${formStatus.type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}`}></i>
+              <p>{formStatus.message}</p>
             </div>
-            <h3>Email</h3>
-            <p><a href="mailto:your.email@example.com">your.email@example.com</a></p>
-          </div>
+          )}
 
-          <div className="contact-method">
-            <div className="contact-icon">
-              <i className="fas fa-phone"></i>
-            </div>
-            <h3>Phone</h3>
-            <p>+1 (123) 456-7890</p>
-          </div>
-
-          <div className="contact-method">
-            <div className="contact-icon">
-              <i className="fas fa-map-marker-alt"></i>
-            </div>
-            <h3>Location</h3>
-            <p>Your City, Country</p>
-          </div>
-        </div>
-
-        <div className="contact-form">
-          <form onSubmit={handleSubmit}>
-            {formStatus.submitted && (
-              <div className="form-success">
-                <i className="fas fa-check-circle"></i>
-                <p>Thank you for your message! I'll get back to you soon.</p>
-              </div>
-            )}
-
-            {formStatus.error && (
-              <div className="form-error">
-                <i className="fas fa-exclamation-circle"></i>
-                <p>{formStatus.error}</p>
-              </div>
-            )}
-
+          <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name</label>
               <input
                 type="text"
                 id="name"
+                name="name"
                 className="form-control"
-                placeholder="Your Name"
                 value={formData.name}
                 onChange={handleChange}
-                disabled={formStatus.submitting}
                 required
               />
             </div>
@@ -168,11 +72,10 @@ const Contact = () => {
               <input
                 type="email"
                 id="email"
+                name="email"
                 className="form-control"
-                placeholder="your.email@example.com"
                 value={formData.email}
                 onChange={handleChange}
-                disabled={formStatus.submitting}
                 required
               />
             </div>
@@ -181,27 +84,31 @@ const Contact = () => {
               <label htmlFor="message">Message</label>
               <textarea
                 id="message"
+                name="message"
                 className="form-control"
-                rows="5"
-                placeholder="Your message here..."
                 value={formData.message}
                 onChange={handleChange}
-                disabled={formStatus.submitting}
+                rows="5"
                 required
               ></textarea>
             </div>
 
             <button
               type="submit"
-              className={`primary-button submit-btn ${formStatus.submitting ? 'submitting' : ''}`}
-              disabled={formStatus.submitting}
+              className={`contact-submit-btn ${isSubmitting ? 'submitting' : ''}`}
+              disabled={isSubmitting}
             >
-              {formStatus.submitting ? (
+              {isSubmitting ? (
                 <>
                   <span className="button-spinner"></span>
                   Sending...
                 </>
-              ) : 'Send Message'}
+              ) : (
+                <>
+                  <i className="fas fa-paper-plane"></i>
+                  Send Message
+                </>
+              )}
             </button>
           </form>
         </div>
