@@ -171,19 +171,6 @@ The `build` folder contains the optimized production build ready for deployment 
 
 This is a personal portfolio project. All rights reserved.
 
-## 📧 Contact
-
-- **Email**: your.email@example.com
-- **LinkedIn**: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
-- **GitHub**: [Your GitHub Profile](https://github.com/yourusername)
-
-## 🙏 Acknowledgments
-
-- [Three.js](https://threejs.org/) for 3D graphics
-- [React Three Fiber](https://docs.pmnd.rs/react-three-fiber) for React integration
-- [Font Awesome](https://fontawesome.com/) for icons
-- [Create React App](https://create-react-app.dev/) for the foundation
-
 ---
 
 ⭐ Star this repository if you found it helpful!
