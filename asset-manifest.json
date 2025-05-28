@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/My-Portfolio/static/css/main.c9776f55.css",
+    "main.js": "/My-Portfolio/static/js/main.63c99354.js",
+    "static/media/Profile_.jpg": "/My-Portfolio/static/media/Profile_.f4427b1dc62f19fe706c.jpg",
+    "static/media/Portfolio website.png": "/My-Portfolio/static/media/Portfolio website.357226a647178c7bf1d9.png",
+    "static/media/Tree-of-Life.png": "/My-Portfolio/static/media/Tree-of-Life.9ac83f6bef9eb30c1b33.png",
+    "index.html": "/My-Portfolio/index.html",
+    "main.c9776f55.css.map": "/My-Portfolio/static/css/main.c9776f55.css.map",
+    "main.63c99354.js.map": "/My-Portfolio/static/js/main.63c99354.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c9776f55.css",
+    "static/js/main.63c99354.js"
+  ]
+}
